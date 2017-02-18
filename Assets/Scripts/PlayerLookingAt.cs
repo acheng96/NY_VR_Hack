@@ -35,6 +35,11 @@ public class PlayerLookingAt : MonoBehaviour
                 hit.collider.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
                 hit.collider.GetComponentInChildren<UnityEngine.UI.Text>().color = new Color(76f / 255f, 255f / 255f, 159f / 255f);
             }
+
+            if (Input.GetButtonUp("Fire1"))
+            {
+                hit.collider.GetComponent<UnityEngine.UI.Button>().onClick.Invoke();
+            }
         } else
         {
             ResetMenuButtons();
