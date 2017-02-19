@@ -7,6 +7,7 @@ public class PlayerLookingAt : MonoBehaviour
 
     Transform cameraTransform = null;
     public Transform reticle;
+    public Sprite star;
     public string prevScene;
 
     void Awake()
@@ -48,6 +49,7 @@ public class PlayerLookingAt : MonoBehaviour
         {
             ResetMenuButtons();
         }
+        
     }
 
     void ResetMenuButtons()
@@ -70,5 +72,44 @@ public class PlayerLookingAt : MonoBehaviour
     public void loadScene(string sceneName)
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
+
+    bool one_click = false;
+    bool timer_running;
+    float timer_for_double_click ;
+
+    //this is how long in seconds to allow for a double click
+    float delay = 2f;
+
+    void DoubleClick()
+    {
+         if(Input.GetMouseButtonDown(0))
+         {
+            if(!one_click) // first click no previous clicks
+            {
+              one_click = true;
+      
+              timer_for_double_click = Time.time; // save the current time
+              // do one click things;
+            } 
+            else
+            {
+              one_click = false; // found a double click, now reset
+
+                reticle.GetComponent<UnityEngine.UI.Image>().overrideSprite = star;
+            }
+         }
+         if(one_click)
+         {
+            // if the time now is delay seconds more than when the first click started. 
+            if ((Time.time - timer_for_double_click) > delay)
+            {
+
+                //basically if thats true its been too long and we want to reset so the next click is simply a single click and not a double click.
+
+                one_click = false;
+            }
+
+        }
     }
 }
