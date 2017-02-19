@@ -64,6 +64,7 @@ public class PlayerLookingAt : MonoBehaviour
         GameObject.FindWithTag("CountryButton").GetComponentInChildren<UnityEngine.UI.Text>().color = Color.white;
         GameObject.FindWithTag("OutdoorButton").GetComponentInChildren<UnityEngine.UI.Text>().color = Color.white;
         GameObject.FindWithTag("BookmarksButton").GetComponentInChildren<UnityEngine.UI.Text>().color = Color.white;
+
         if (GameObject.FindWithTag("RandomButton") != null)
             GameObject.FindWithTag("RandomButton").GetComponentInChildren<UnityEngine.UI.Text>().color = Color.white;
 
